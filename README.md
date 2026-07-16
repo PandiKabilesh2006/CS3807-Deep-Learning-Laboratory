@@ -1,6 +1,6 @@
-# CS2807 - Deep Learning Laboratory
+# CS3807 - Deep Learning Laboratory
 
-This repository contains the laboratory assignments, implementations, and projects completed as part of the **CS2807 - Deep Learning Laboratory** course.
+This repository contains the laboratory assignments, implementations, and projects completed as part of the **CS3807 - Deep Learning Laboratory** course.
 
 The objective of this laboratory is to study, implement, and evaluate various deep learning models, starting from foundational building blocks implemented from scratch up to complex models using modern deep learning frameworks.
 
