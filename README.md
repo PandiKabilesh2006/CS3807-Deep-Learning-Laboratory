@@ -16,6 +16,7 @@
 | **3** | 2026-08-15 | **CNN for Image Classification**<br>• Custom CNN from scratch in TensorFlow/Keras.<br>• Multi-class classification on the CIFAR-10 dataset.<br>• Visualizing intermediate layer feature maps.<br>• Comparative study of Max Pooling vs. Average Pooling architectures. | [Lab 3 Directory](file:///e:/CS3807-Deep%20Learning%20Laboratory/Lab%203%20CNN%20for%20Image%20Classification/)<br>[Notebook](file:///e:/CS3807-Deep%20Learning%20Laboratory/Lab%203%20CNN%20for%20Image%20Classification/cnn_for_cifar_10.ipynb) | 🟢 **Completed** |
 | **4** | 2026-08-20 | **Transfer Learning with VGG16**<br>• Image classification on upscaled CIFAR-10 (96x96x3).<br>• Comparison of frozen Feature Extraction base vs. selective Fine-Tuning of block5 layers.<br>• Hyperparameter training and classification reports (Precision, Recall, F1). | [Lab 4 Directory](file:///e:/CS3807-Deep%20Learning%20Laboratory/Lab%204%20Comparative%20Study%20of%20Deep%20Convolutional%20Neural%20Network%20Architectures%20Using%20Transfer%20Learning/)<br>[Notebook](file:///e:/CS3807-Deep%20Learning%20Laboratory/Lab%204%20Comparative%20Study%20of%20Deep%20Convolutional%20Neural%20Network%20Architectures%20Using%20Transfer%20Learning/24011101075_DL_Lab_Exercise_4.ipynb) | 🟢 **Completed** |
 | **5** | 2026-08-27 | **Comprehensive CNN Training & Optimization**<br>• Fine-grained multi-class classification on Oxford-IIIT Pet (37 breeds).<br>• Systematic analysis across 10 sub-experiments: Initializers, regularizers (L2, Dropout), optimizers, learning rates, batch sizes, feature extraction vs. fine-tuning.<br>• 5-Fold Cross-Validation on top configurations to select the best deployed model. | [Lab 5 Directory](file:///e:/CS3807-Deep%20Learning%20Laboratory/Lab%205%20Comprehensive%20Study%20of%20CNN%20Training,%20Regularization,%20Optimization,%20Hyperparameter%20Tuning,%20Transfer%20Learning%20and%20Cross-Validation/)<br>[Notebook](file:///e:/CS3807-Deep%20Learning%20Laboratory/Lab%205%20Comprehensive%20Study%20of%20CNN%20Training,%20Regularization,%20Optimization,%20Hyperparameter%20Tuning,%20Transfer%20Learning%20and%20Cross-Validation/24011101075_DL_Lab_Exercise_5.ipynb) | 🟢 **Completed** |
+| **7** | 2026-09-17 | **End-to-End Study of Autoencoders, Convolutional Autoencoders, Denoising Autoencoders and Variational Autoencoders**<br>• End-to-end comparative study of Fully Connected Autoencoder (FC-AE), Convolutional Autoencoder (CAE), Denoising CAE, and Variational Autoencoder (VAE) on MNIST.<br>• Quantitative evaluation of reconstruction fidelity using MSE, MAE, and SSIM.<br>• Noise robustness analysis under Gaussian noise ($\sigma \in \{0.1, 0.2, 0.3\}$) and Salt-and-Pepper corruption.<br>• 2D latent space manifold visualization, random synthetic digit generation ($z \sim \mathcal{N}(0, I)$), linear latent interpolation, and bottleneck capacity ablation ($d_z \in \{2, 8, 16, 32\}$). | [Lab 7 Directory](file:///e:/CS3807-Deep%20Learning%20Laboratory/Lab%207%20End-to-End%20Study%20of%20Autoencoders,%20Convolutional/)<br>[Report PDF](file:///e:/CS3807-Deep%20Learning%20Laboratory/Lab%207%20End-to-End%20Study%20of%20Autoencoders,%20Convolutional/24011101075_DL_Lab_Exercise_7_compressed.pdf)<br>[README](file:///e:/CS3807-Deep%20Learning%20Laboratory/Lab%207%20End-to-End%20Study%20of%20Autoencoders,%20Convolutional/README.md) | 🟢 **Completed** |
 
 ---
 
@@ -100,4 +101,24 @@ pip install tensorflow
    - Feature Extraction vs. Fine-Tuning comparisons (`.pdf` files)
    - 5-Fold Cross-Validation comparisons (`cross_validation_comparison.pdf`)
    - Final classification report, confusion matrix heatmap, and misclassified examples (`.pdf` files)
+
+### 📓 Lab 7: Autoencoders, Denoising Autoencoders and Variational Autoencoders (VAEs)
+
+1. **Dataset Location:** The MNIST dataset is automatically downloaded and loaded via `tensorflow.keras.datasets.mnist`.
+2. **Lab Report & TeX Source:** Review [24011101075_DL_Lab_Exercise_7_compressed.pdf](file:///e:/CS3807-Deep%20Learning%20Laboratory/Lab%207%20End-to-End%20Study%20of%20Autoencoders,%20Convolutional/24011101075_DL_Lab_Exercise_7_compressed.pdf) or compile [Experiment_7.tex](file:///e:/CS3807-Deep%20Learning%20Laboratory/Lab%207%20End-to-End%20Study%20of%20Autoencoders,%20Convolutional/Experiment_7.tex). Detailed analyses and architecture breakdowns are provided in the [Lab 7 README](file:///e:/CS3807-Deep%20Learning%20Laboratory/Lab%207%20End-to-End%20Study%20of%20Autoencoders,%20Convolutional/README.md).
+3. **Execution Pipeline:**
+   - Normalize $28 \times 28 \times 1$ grayscale images to $[0, 1]$.
+   - Train Fully Connected Autoencoder ($784 \to 128 \to 32 \to 16 \to 32 \to 128 \to 784$).
+   - Train Convolutional Autoencoder (Conv2D + MaxPool / UpSampling2D) preserving 2D spatial locality.
+   - Train Denoising CAE with Gaussian corruption ($\sigma=0.2$) targeting clean uncorrupted targets.
+   - Train Variational Autoencoder with reparameterization trick ($z = \mu + \sigma \odot \epsilon$) and joint reconstruction + KL divergence objective.
+   - Run latent bottleneck capacity study ($d_z \in \{2, 8, 16, 32\}$).
+4. **Output Visualizations:** Generates 23 publication-quality comparison charts:
+   - Sample images and FC-AE reconstructions (`01_mnist_samples.pdf`, `02_fc_ae_original_vs_reconstructed.pdf`, `03_fc_ae_training_validation_loss.pdf`)
+   - CAE reconstructions and FC-AE vs. CAE comparison (`04_cae_reconstruction.pdf`, `05_fc_ae_vs_cae_reconstruction.pdf`)
+   - Denoising progression and noise sensitivity curves (`06_clean_noisy_denoised.pdf`, `07_denoising_cae_loss.pdf`, `08_noise_level_vs_mse.pdf`, `09_noise_level_vs_mae.pdf`, `10_noise_level_vs_ssim.pdf`)
+   - VAE losses (Reconstruction, KL, Total) and reconstructions (`11_vae_reconstruction_loss.pdf`, `12_vae_kl_loss.pdf`, `13_vae_total_loss.pdf`, `14_vae_original_vs_reconstructed.pdf`)
+   - 2D latent space cluster manifold, 25 generated sample digits, and smooth latent interpolation (`15_vae_latent_space.pdf`, `16_vae_generated_25.pdf`, `17_vae_interpolation.pdf`)
+   - Per-image reconstruction error distributions and top 5 high-error sample inspections (`18_vae_reconstruction_error.pdf`, `19_vae_top5_high_error.pdf`, `20_combined_reconstruction_error.pdf`, `21_fc_top5_high_error.pdf`)
+   - Latent dimension sensitivity curves (`22_latent_dimension_vs_mse.pdf`, `23_latent_dimension_vs_ssim.pdf`)
 
